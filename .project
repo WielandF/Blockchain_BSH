@@ -3,6 +3,7 @@
 	<name>Blockchain_BSH</name>
 	<comment></comment>
 	<projects>
+		<project>MultiChainJavaAPI-MultiChainJavaAPI-4.0.9</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
