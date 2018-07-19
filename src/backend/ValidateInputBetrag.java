@@ -22,6 +22,7 @@ public class ValidateInputBetrag {
 		List<String> result = null;
 		try {
 			result = test.getAddressCommand().getAddresses();
+			System.out.println(result);
 		} catch (MultichainException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
