@@ -8,21 +8,27 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Maske extends JFrame implements ActionListener{
-
+public class LoginFrontend extends JFrame implements ActionListener {
 	JButton jButton1;
 	JPanel  jPanel1;
 	JTextField jText1;
+	JTextField jText2;
 	static Maske frame;
 	ActionListener listener;
 	
-	public Maske(Maske frame) {
-		// TODO Auto-generated constructor stub
+	public LoginFrontend(LoginFrontend login) {
+        
         //TextField
         jText1 = new JTextField();
         jText1.setSize(100,100);
-        jText1.setText("Freistellungsbetrag");
+        jText1.setText("Name");
         getContentPane().add(jText1);
+        
+        //TextField
+        jText2 = new JTextField();
+        jText2.setSize(100,100);
+        jText2.setText("Passwort");
+        getContentPane().add(jText2);
         
         
 	    //ButtonParameter
@@ -32,6 +38,7 @@ public class Maske extends JFrame implements ActionListener{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(jText1.getText());
+				System.out.println(jText2.getText());
 			}
 		});
 		
@@ -41,7 +48,7 @@ public class Maske extends JFrame implements ActionListener{
         getContentPane().add(jButton1);
  
     	//FensterParameter   
-		this.setTitle("Freistellungsauftrag übermitteln");
+		this.setTitle("Anmelden");
 	    this.setSize(1000, 620);
 	    this.setResizable(false);
 	    this.setLocation(50, 50);
@@ -49,12 +56,13 @@ public class Maske extends JFrame implements ActionListener{
         pack();
 	}
 	
-
-
+	
+	
+	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	     frame=new Maske(frame);
-	 
+		LoginFrontend login = null;
+		login = new LoginFrontend(login);
+		
 	}
 
 	@Override
