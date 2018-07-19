@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import backend.ValidateInputBetrag;
 
 public class LoginFrontend extends JFrame implements ActionListener {
 	JButton jButton1;
@@ -15,19 +16,23 @@ public class LoginFrontend extends JFrame implements ActionListener {
 	JTextField jText2;
 	static Maske frame;
 	ActionListener listener;
+	public String name;
+	public String password;
+	ValidateInputBetrag blockchain;
+	
 	
 	public LoginFrontend(LoginFrontend login) {
         
         //TextField
         jText1 = new JTextField();
         jText1.setSize(100,100);
-        jText1.setText("Name");
+        jText1.setText("multichainrpc");
         getContentPane().add(jText1);
         
         //TextField
         jText2 = new JTextField();
         jText2.setSize(100,100);
-        jText2.setText("Passwort");
+        jText2.setText("FsuHCkkvFDCQRnu9pJjQuPhKkmEk7gsgcB4e8Jtdhahw");
         getContentPane().add(jText2);
         
         
@@ -37,8 +42,13 @@ public class LoginFrontend extends JFrame implements ActionListener {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(jText1.getText());
-				System.out.println(jText2.getText());
+				name=jText1.getText();
+				password=jText2.getText();
+				System.out.println(name);
+				System.out.println(password);
+				blockchain = new ValidateInputBetrag();
+				blockchain.callBlockchain(name, password);
+				
 			}
 		});
 		
@@ -56,6 +66,18 @@ public class LoginFrontend extends JFrame implements ActionListener {
         pack();
 	}
 	
+	
+	
+	public String getName() {
+		return name;
+		
+	}
+	
+	
+	public String getPw() {
+		return password;
+		
+	}
 	
 	
 	

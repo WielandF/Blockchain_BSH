@@ -3,17 +3,21 @@ import java.util.List;
 
 import multichain.command.MultiChainCommand;
 import multichain.command.MultichainException;
-
+import frontend.LoginFrontend;;
 
 public class ValidateInputBetrag {
 
+
+
+	
 	public ValidateInputBetrag() {
 		// TODO Auto-generated constructor stub
+	
 	}
 
-	public static void main(String[] args) {
-		//BlockChain has to be created and started before
-		MultiChainCommand test = new MultiChainCommand("192.168.1.4", "6760", "multichainrpc","8U7rf5R6TgR6iU5Wm6RJWUX2bFW6GyQ718MwB268GQGh");
+	public void callBlockchain(String name, String pw) {
+		//BlockChain has to be created and started before  "multichainrpc"
+		MultiChainCommand test = new MultiChainCommand("192.168.1.4", "6802", name, pw);
 
 		// localhost is the IP used by Multichain
 		// 6824 is, here, the port used by the BlockChain, corresponding of the value of default-rpc-port in the file params.dat 
@@ -29,6 +33,11 @@ public class ValidateInputBetrag {
 		}
 
 		//result contains the addresses of the wallet as list of String.
+	}
+	
+	
+	public static void main(String[] args) {
+
 
 	}
 
