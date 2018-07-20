@@ -86,15 +86,14 @@ public class LoginFrontend extends JFrame implements ActionListener {
 				blockchain = new ValidateInputBetrag();
 				String data = blockchain.readBlockchain(name, password);
 				jText4.setText(convertHexToString(data));
-
 			}
 		});
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new java.awt.FlowLayout());
-		jButton1.setText("jButton1");
+		jButton1.setText("Freistellungsauftrag anlegen");
 		getContentPane().add(jButton1);
-		jButton2.setText("Lesen");
+		jButton2.setText("Freistellungsbetrag lesen");
 		getContentPane().add(jButton2);
 
 		// FensterParameter
