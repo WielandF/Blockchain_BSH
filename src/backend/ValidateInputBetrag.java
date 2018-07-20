@@ -13,6 +13,7 @@ import multichain.command.MultichainException;
 import multichain.command.StreamCommand;
 import multichain.command.WalletTransactionCommand;
 import multichain.object.BalanceAsset;
+import multichain.object.StreamKeyItem;
 import frontend.LoginFrontend;
 
 public class ValidateInputBetrag {
@@ -28,14 +29,9 @@ public class ValidateInputBetrag {
 
 	public void callBlockchain(String name, String pw, String betrag) {
 		//BlockChain has to be created and started before  "multichainrpc"
-		multiChainCommand = new MultiChainCommand("192.168.1.4", "4414", name, pw);
-	
-		// localhost is the IP used by Multichain
-		// 6824 is, here, the port used by the BlockChain, corresponding of the value of default-rpc-port in the file params.dat 
-		// multichainrpc and 73oYQWzx45h... are login and password to access to RPC commands, values can be found in the file multichain.conf
-		//System.out.print(name);
-		//System.out.print(pw);
-		//System.out.print(betrag);
+		if(multiChainCommand == null) {
+			multiChainCommand = new MultiChainCommand("192.168.1.4", "4414", name, pw);
+		}
 		List<String> result = null;
 		try {
 			
@@ -43,8 +39,6 @@ public class ValidateInputBetrag {
 				JSONObject obj = new JSONObject();
 				
 			      try {
-				//	obj.put("name", name);
-					//obj.put("pw", pw);
 				    obj.put("value", betrag);
 
 				} catch (JSONException e) {
@@ -54,9 +48,7 @@ public class ValidateInputBetrag {
 			      
 			    System.out.print(obj);
 				StreamCommand streamcommand = multiChainCommand.getStreamCommand();
-//				streamcommand.publish("hackstream1", "FSA", betrag.toString());
 				streamcommand.publish("hackstream1", "FSA", betrag);
-				//streamcommand.publish(streamName, key, dataHex)
 			}
 			
 			
@@ -69,10 +61,34 @@ public class ValidateInputBetrag {
 			e.printStackTrace();
 		}
 
-		//result contains the addresses of the wallet as list of String.
 	}
 	
-	public void publishFSA(String name, String pw) {
+	public String readBlockchain(String name, String pw) {
+		
+		if(multiChainCommand == null) {
+			multiChainCommand = new MultiChainCommand("192.168.1.4", "4414", name, pw);
+		}
+		
+		String s = "";
+		
+		StreamCommand streamcommand = multiChainCommand.getStreamCommand();
+		try {
+			List<StreamKeyItem> fsalist = streamcommand.listStreamKeyItems("hackstream1", "FSA");
+			System.out.println(fsalist);
+			
+			for (StreamKeyItem s1 : fsalist)
+			{
+			    s = s1.getData();
+			}
+
+		} catch (MultichainException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return s;
+		
+		
+		
 		
 		
 	}

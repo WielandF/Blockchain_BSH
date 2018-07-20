@@ -11,10 +11,12 @@ import backend.ValidateInputBetrag;
 
 public class LoginFrontend extends JFrame implements ActionListener {
 	JButton jButton1;
+	JButton jButton2;
 	JPanel jPanel1;
 	JTextField jText1;
 	JTextField jText2;
 	JTextField jText3;
+	JTextField jText4;
 	static Maske frame;
 	ActionListener listener;
 	public String name;
@@ -41,6 +43,8 @@ public class LoginFrontend extends JFrame implements ActionListener {
 		jText3.setSize(100, 100);
 		jText3.setText("500");
 		getContentPane().add(jText3);
+		
+
 
 		// ButtonParameter
 		jButton1 = new javax.swing.JButton();
@@ -59,11 +63,39 @@ public class LoginFrontend extends JFrame implements ActionListener {
 
 			}
 		});
+		
+		// TextField
+		jText4 = new JTextField();
+		jText4.setSize(100, 100);
+		jText4.setText("TEST");
+		getContentPane().add(jText4);
+		
+		
+		// ButtonParameter
+		jButton2 = new javax.swing.JButton();
+		jButton2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				name = jText1.getText();
+				password = jText2.getText();
+				betrag = jText3.getText();
+				System.out.println(name);
+				System.out.println(password);
+				System.out.println(betrag);
+				blockchain = new ValidateInputBetrag();
+				String data = blockchain.readBlockchain(name, password);
+				jText4.setText(convertHexToString(data));
+
+			}
+		});
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		getContentPane().setLayout(new java.awt.FlowLayout());
 		jButton1.setText("jButton1");
 		getContentPane().add(jButton1);
+		jButton2.setText("Lesen");
+		getContentPane().add(jButton2);
 
 		// FensterParameter
 		this.setTitle("Anmelden");
@@ -87,6 +119,16 @@ public class LoginFrontend extends JFrame implements ActionListener {
     		}
     	else {
     	return hexAppend;}
+
+    }
+	
+	
+	private static String convertHexToString(String s) {
+		
+		
+    	Integer decimal = Integer.parseInt(s,16);
+   	
+    	return decimal.toString();
 
     }
 
