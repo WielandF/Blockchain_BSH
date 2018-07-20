@@ -34,13 +34,13 @@ public class LoginFrontend extends JFrame implements ActionListener {
         //TextField
         jText2 = new JTextField();
         jText2.setSize(100,100);
-        jText2.setText("FsuHCkkvFDCQRnu9pJjQuPhKkmEk7gsgcB4e8Jtdhahw");
+        jText2.setText("Csh4eMi3s9r4yVQ1CY2RtrF8uduhiojJBi1ASNUGKwpM");
         getContentPane().add(jText2);
         
       //TextField
         jText3 = new JTextField();
         jText3.setSize(100,100);
-        jText3.setText("Betrag");
+        jText3.setText("500");
         getContentPane().add(jText3);
         
 	    //ButtonParameter
@@ -54,8 +54,9 @@ public class LoginFrontend extends JFrame implements ActionListener {
 				betrag=jText3.getText();
 				System.out.println(name);
 				System.out.println(password);
+				System.out.println(betrag);
 				blockchain = new ValidateInputBetrag();
-				blockchain.callBlockchain(name, password);
+				blockchain.callBlockchain(name, password, betrag);
 				
 			}
 		});

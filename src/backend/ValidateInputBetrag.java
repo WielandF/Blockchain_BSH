@@ -28,23 +28,23 @@ public class ValidateInputBetrag {
 
 	public void callBlockchain(String name, String pw, String betrag) {
 		//BlockChain has to be created and started before  "multichainrpc"
-		//MultiChainCommand test = new MultiChainCommand("192.168.1.4", "6802", name, pw);
-		multiChainCommand = new MultiChainCommand("192.168.1.4", "7718", "multichainrpc", "E78WL3SadNZ6BqRitgqvDsfopjNQDVTQ9o9pW3RkHStC");
-
+		multiChainCommand = new MultiChainCommand("192.168.1.4", "4414", name, pw);
+	
 		// localhost is the IP used by Multichain
 		// 6824 is, here, the port used by the BlockChain, corresponding of the value of default-rpc-port in the file params.dat 
 		// multichainrpc and 73oYQWzx45h... are login and password to access to RPC commands, values can be found in the file multichain.conf
-
+		//System.out.print(name);
+		//System.out.print(pw);
+		//System.out.print(betrag);
 		List<String> result = null;
 		try {
-			result = test.getAddressCommand().getAddresses();
 			
-			if (betrag == "") {
+			if (betrag != "") {
 				JSONObject obj = new JSONObject();
-
+				
 			      try {
-					obj.put("name", name);
-					obj.put("pw", pw);
+				//	obj.put("name", name);
+					//obj.put("pw", pw);
 				    obj.put("value", betrag);
 
 				} catch (JSONException e) {
@@ -52,28 +52,17 @@ public class ValidateInputBetrag {
 					e.printStackTrace();
 				}
 			      
-			      System.out.print(obj);
+			    System.out.print(obj);
 				StreamCommand streamcommand = multiChainCommand.getStreamCommand();
-				streamcommand.publish("hackstream1", "FSA", obj.toString());
+				streamcommand.publish("hackstream1", "FSA", betrag);
+				//streamcommand.publish(streamName, key, dataHex)
 			}
 			
 			
-//			StreamCommand result2 = multiChainCommand.getStreamCommand();
-//			IssueCommand result3 = multiChainCommand.getIssueCommand();
-//			result3.issue("1EQ8FHj3gs5qMhnfeJjJdsqAzKkhq1tHeH5Not", "Euro", 200, 0,01);
-//			multiChainCommand.setIssueCommand(result3);
-//			result2.subscribe("stream1");
-//			multiChainCommand.setStreamCommand(result2);
-//			WalletTransactionCommand test2134 = multiChainCommand.getWalletTransactionCommand();
-//
-//	
-//			
-//			List<BalanceAsset> result5 = multiChainCommand.getBalanceCommand().getTotalBalances();
-//			System.out.println(result5);
-//			
-//			
 			result = multiChainCommand.getAddressCommand().getAddresses();
 			System.out.println(result);
+			
+			
 		} catch (MultichainException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,7 +102,7 @@ public class ValidateInputBetrag {
 //			List<BalanceAsset> result5 = test.getBalanceCommand().getTotalBalances();
 //			System.out.println(result5);
 			
-			streamcommand.publish("hackstream1", "FSA", "96");
+			//streamcommand.publish("hackstream1", "FSA", "96");
 
 			
 			result = test.getAddressCommand().getAddresses();
