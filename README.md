@@ -2,7 +2,7 @@
 
 
 This is a project to find out what use the blockchain technology can have for the german Bausparkassen sector.
-Therefore we are using MultiChain (https://www.multichain.com/) as Blockchain.
+
 
 # Goal
 
