@@ -54,6 +54,7 @@ public class ValidateInputBetrag {
 			      
 			    System.out.print(obj);
 				StreamCommand streamcommand = multiChainCommand.getStreamCommand();
+//				streamcommand.publish("hackstream1", "FSA", betrag.toString());
 				streamcommand.publish("hackstream1", "FSA", betrag);
 				//streamcommand.publish(streamName, key, dataHex)
 			}
